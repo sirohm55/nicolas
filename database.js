@@ -6,6 +6,9 @@ const jwt = require("jsonwebtoken");
 const { jwtDecode } = require('jwt-decode');
 const rateLimitMiddleware = require("./rateLimiter");
 
+var moment = require('moment'); // require
+let momentOne = moment();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -51,7 +54,17 @@ const filePath = './super_secret.txt';
 
 //function for API
 async function solarData (temp1, voltage1, temp2, voltage2){
+    let currentDate = new Date()
+    console.log (momentOne.local().toISOString(), Date())
+
+    var date = moment.utc().format();
+    console.log(date, "- now in UTC"); 
+    
+    var local = moment.utc(date).local().format();
+    console.log(local, "- UTC now to local"); 
+
     await client.db("solar_panel").collection("data").insertOne({
+        data: currentDate,
         solar1: {temp: temp1, voltage: voltage1},
         solar2: {temp: temp2, voltage: voltage2}
     })
@@ -60,6 +73,6 @@ async function solarData (temp1, voltage1, temp2, voltage2){
 }
 
 //API calls
-app.post("/postData" , async (req, res) => {  //register visitor
+app.post('/postData' , async (req, res) => {  //register visitor
     res.send(await solarData(req.body.temp1, req.body.voltage1, req.body.temp2, req.body.voltage2))
 })
