@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 const { jwtDecode } = require('jwt-decode');
 const rateLimitMiddleware = require("./rateLimiter");
 
-var moment = require('moment'); // require
-let momentOne = moment();
+// var moment = require('moment'); // require
+// let momentOne = moment();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -46,11 +46,6 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   }
 });
-
-const fs = require('fs'); 
-// Path to the file you want to read 
-const filePath = './super_secret.txt'; 
-// Read the file and store its contents into a string 
 
 //function for API
 async function solarData (temp1, voltage1, temp2, voltage2){
