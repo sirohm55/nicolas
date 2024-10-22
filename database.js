@@ -1,19 +1,12 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000;
-const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
-const { jwtDecode } = require('jwt-decode');
-const rateLimitMiddleware = require("./rateLimiter");
 
 // var moment = require('moment'); // require
 // let momentOne = moment();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.set ('trust proxy' , 1)
 
 const swaggerUi = require ("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
