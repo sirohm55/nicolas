@@ -54,17 +54,8 @@ const filePath = './super_secret.txt';
 
 //function for API
 async function solarData (temp1, voltage1, temp2, voltage2){
-    let currentDate = new Date()
-    console.log (momentOne.local().toISOString(), Date())
-
-    var date = moment.utc().format();
-    console.log(date, "- now in UTC"); 
-    
-    var local = moment.utc(date).local().format();
-    console.log(local, "- UTC now to local"); 
 
     await client.db("solar_panel").collection("data").insertOne({
-        data: currentDate,
         solar1: {temp: temp1, voltage: voltage1},
         solar2: {temp: temp2, voltage: voltage2}
     })
