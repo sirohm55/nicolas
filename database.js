@@ -40,14 +40,19 @@ const client = new MongoClient(uri, {
   }
 });
 
+
+
 //function for API
 async function solarData (temp1, voltage1, temp2, voltage2){
+
+    await client.connect();
 
     await client.db("solar_panel").collection("data").insertOne({
         solar1: {temp: temp1, voltage: voltage1},
         solar2: {temp: temp2, voltage: voltage2}
     })
 
+    await client.close();
     return "Data Inserted"
 }
 
