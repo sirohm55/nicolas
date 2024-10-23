@@ -8,3 +8,14 @@ Content-Type: application/json
     "temp2":22.3,
     "voltage2": 22.6
 }
+
+###
+POST https://nicolas-solar-iot-f2e6cygza7c8ayh2.eastasia-01.azurewebsites.net/postData
+Content-Type: application/json
+
+{
+    "temp1": 30.25,
+    "voltage1": 24.6,
+    "temp2":22.3,
+    "voltage2": 22.6
+}
