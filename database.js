@@ -60,3 +60,7 @@ async function solarData (temp1, voltage1, temp2, voltage2){
 app.post('/postData' , async (req, res) => {  //register visitor
     res.send(await solarData(req.body.temp1, req.body.voltage1, req.body.temp2, req.body.voltage2))
 })
+
+app.get('/', (req, res) => {
+    res.redirect ("/api-docs");
+ })
